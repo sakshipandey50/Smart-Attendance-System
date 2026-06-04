@@ -34,7 +34,7 @@ while True:
 
         label, confidence = model.predict(face)
 
-        if confidence < 70:
+        if confidence < 50:
          name = labels[label]
          text = f"{name} ({round(confidence, 2)})"
          color = (0, 255, 0)
@@ -48,6 +48,7 @@ while True:
             color = (0, 0, 255)
 
         cv2.rectangle(frame, (x, y), (x + w, y + h), color, 2)
+        
         cv2.putText(frame, text, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 2)
 
     cv2.imshow("Face Recognition", frame)
